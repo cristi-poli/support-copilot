@@ -1,59 +1,128 @@
-# AiSupportCopilot
+# Support Copilot
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.5.
+A full-stack customer support ticket management application built with Angular, TypeScript, Node.js, and Express.
 
-## Development server
+The application allows users to submit customer support requests, automatically classify them using rule-based logic, assign a priority and suggested action, and manage the resulting support tickets.
 
-To start a local development server, run:
+## Features
 
-```bash
-ng serve
+- Submit customer support requests
+- Automatic ticket categorization
+- Priority assignment: LOW, MEDIUM, HIGH
+- Suggested support actions
+- Ticket status management
+- Resolve tickets
+- Filter tickets by status
+- Load all tickets
+- Clear all tickets
+- Angular frontend connected to a REST API
+
+## Technologies
+
+### Frontend
+- Angular
+- TypeScript
+- HTML
+- CSS
+
+### Backend
+- Node.js
+- Express
+- TypeScript
+- REST API
+- JSON
+- CORS
+
+## Architecture
+
+```text
+User
+  ↓
+Angular Frontend
+  ↓
+HTTP / REST API
+  ↓
+Node.js + Express Backend
+  ↓
+Ticket classification and management
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## API Endpoints
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```text
+POST   /analyze
+GET    /tickets
+PATCH  /tickets/:id/resolve
+DELETE /tickets
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Running the Project
+
+### Frontend
+
+From the main project directory:
 
 ```bash
-ng generate --help
+npm start
 ```
 
-## Building
+The Angular application runs at:
 
-To build the project run:
+```text
+http://localhost:4200
+```
+
+### Backend
+
+Open another terminal:
 
 ```bash
-ng build
+cd backend
+npx tsx server.ts
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+The backend runs at:
 
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
+```text
+http://localhost:3000
 ```
 
-## Running end-to-end tests
+## Example
 
-For end-to-end (e2e) testing, run:
+Input:
 
-```bash
-ng e2e
+```text
+I cannot login after changing my password.
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Result:
 
-## Additional Resources
+```text
+Category: Account Access
+Priority: HIGH
+Status: OPEN
+Suggested Action: Verify the account and start the recovery process.
+```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## What I Learned
+
+This project helped me practice:
+
+- Angular components and data binding
+- TypeScript interfaces and methods
+- HTTP requests with Angular HttpClient
+- REST API development
+- Node.js and Express
+- Frontend-backend communication
+- JSON data exchange
+- Ticket state management
+- Filtering data in Angular
+
+## Future Improvements
+
+- Persistent database storage
+- User authentication
+- Improved ticket dashboard
+- Automated testing
+- AI-based ticket classification
+- LangChain integration
