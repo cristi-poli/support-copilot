@@ -53,6 +53,14 @@
             Clear Tickets
         </button>
 
+        <label>Filter by status:</label>
+
+        <select [(ngModel)]="selectedStatus">
+            <option value="ALL">All</option>
+            <option value="OPEN">Open</option>
+            <option value="RESOLVED">Resolved</option>
+        </select>
+
         <table>
             <thead>
                 <tr>
@@ -67,7 +75,7 @@
 
             <tbody>
 
-                @for (ticket of tickets; track ticket.id) {
+                @for (ticket of filteredTickets; track ticket.id) {
                     <tr>
                         <td>{{ ticket.id }}</td>
                         <td>{{ ticket.message }}</td>
@@ -76,9 +84,11 @@
                         <td>{{ ticket.status }}</td>
 
                         <td>
-                            <button (click)="resolveTicket(ticket.id)">
-                                Resolve
-                            </button>
+                            @if (ticket.status === 'OPEN') {
+                                <button (click)="resolveTicket(ticket.id)">
+                                    Resolve
+                                </button>
+                            }
                         </td>
                     </tr>
                 }
